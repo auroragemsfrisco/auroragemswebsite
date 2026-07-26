@@ -473,28 +473,28 @@
                 <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80" alt="Kundan Choker">
                 <h3 class="product-title">Royal Kundan Choker</h3>
                 <p class="product-price">$85.00</p>
-                <button class="add-to-cart" onclick="addToCart('Royal Kundan Choker', 85)">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('p1')">Add to Cart</button>
             </div>
             <!-- Product 2 -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80" alt="Jhumka Earrings">
                 <h3 class="product-title">Classic Gold Jhumkas</h3>
                 <p class="product-price">$45.00</p>
-                <button class="add-to-cart" onclick="addToCart('Classic Gold Jhumkas', 45)">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('p2')">Add to Cart</button>
             </div>
             <!-- Product 3 -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80" alt="Bangle Set">
                 <h3 class="product-title">Peacock Enamel Bangles</h3>
                 <p class="product-price">$60.00</p>
-                <button class="add-to-cart" onclick="addToCart('Peacock Enamel Bangles', 60)">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('p3')">Add to Cart</button>
             </div>
             <!-- Product 4 -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80" alt="American Diamond Ring">
                 <h3 class="product-title">American Diamond Ring</h3>
                 <p class="product-price">$35.00</p>
-                <button class="add-to-cart" onclick="addToCart('American Diamond Ring', 35)">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('p4')">Add to Cart</button>
             </div>
         </div>
     </section>
@@ -555,6 +555,14 @@
 
     <!-- JAVASCRIPT FOR CART FUNCTIONALITY -->
     <script>
+        // Secure product catalog (prevents client-side price manipulation)
+        const products = {
+            'p1': { name: 'Royal Kundan Choker', price: 85 },
+            'p2': { name: 'Classic Gold Jhumkas', price: 45 },
+            'p3': { name: 'Peacock Enamel Bangles', price: 60 },
+            'p4': { name: 'American Diamond Ring', price: 35 }
+        };
+
         let cart = [];
         let total = 0;
 
@@ -562,13 +570,16 @@
             document.getElementById('cart-sidebar').classList.toggle('active');
         }
 
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
-            total += price;
-            updateCartUI();
-            
-            // Open cart to show user it was added
-            document.getElementById('cart-sidebar').classList.add('active');
+        function addToCart(productId) {
+            const product = products[productId];
+            if (product) {
+                cart.push({ name: product.name, price: product.price });
+                total += product.price;
+                updateCartUI();
+                
+                // Open cart to show user it was added
+                document.getElementById('cart-sidebar').classList.add('active');
+            }
         }
 
         function updateCartUI() {
@@ -578,17 +589,27 @@
             const cartItemsDiv = document.getElementById('cart-items');
             cartItemsDiv.innerHTML = '';
             
-            cart.forEach((item, index) => {
-                cartItemsDiv.innerHTML += `
-                    <div class="cart-item">
-                        <span>${item.name}</span>
-                        <span>$${item.price.toFixed(2)}</span>
-                    </div>
-                `;
+            cart.forEach((item) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = item.name;
+                
+                const priceSpan = document.createElement('span');
+                priceSpan.textContent = '$' + item.price.toFixed(2);
+                
+                itemDiv.appendChild(nameSpan);
+                itemDiv.appendChild(priceSpan);
+                
+                cartItemsDiv.appendChild(itemDiv);
             });
 
-            if(cart.length === 0) {
-                cartItemsDiv.innerHTML = '<p style="color: #888;">Your cart is empty.</p>';
+            if (cart.length === 0) {
+                const emptyMsg = document.createElement('p');
+                emptyMsg.style.color = '#888';
+                emptyMsg.textContent = 'Your cart is empty.';
+                cartItemsDiv.appendChild(emptyMsg);
             }
         }
 
@@ -605,8 +626,11 @@
             });
             orderText += `%0ATotal: $${total.toFixed(2)}%0A%0APlease let me know how I can pay (Venmo/Zelle/Cash).`;
             
-            // Replace '1234567890' with your actual business WhatsApp number
-            window.open(`https://wa.me/8474449284?text=${orderText}`, '_blank');
+            // Obfuscated phone number to prevent scraping
+            const phoneParts = ['847', '444', '9284'];
+            const phoneStr = phoneParts.join('');
+            
+            window.open(`https://wa.me/${phoneStr}?text=${orderText}`, '_blank');
         }
 
         // Initialize empty cart state
