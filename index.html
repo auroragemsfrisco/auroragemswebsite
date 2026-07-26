@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurora Gems | Fine Imitation Jewelry by Chessy</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <style>
         /* --- LUXURY BRANDING & VARIABLES --- */
         :root {
@@ -50,15 +51,47 @@
             color: var(--accent-gold);
             text-decoration: none;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brand-logo-img {
+            height: 46px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .brand-logo-img {
+            transform: scale(1.06);
+        }
+
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .logo span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-family: 'Lato', sans-serif;
             letter-spacing: 2px;
             color: var(--text-dark);
+            margin-top: 2px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links a {
@@ -278,8 +311,11 @@
     <!-- NAVIGATION -->
     <nav>
         <a href="#" class="logo">
-            AURORA GEMS
-            <span>BY CHESSY • FRISCO TX</span>
+            <img src="logo.svg" alt="Aurora Gems Logo" class="brand-logo-img">
+            <div class="logo-text-wrapper">
+                AURORA GEMS
+                <span>BY CHESSY • FRISCO TX</span>
+            </div>
         </a>
         <div class="nav-links">
             <a href="#collections">Collections</a>
@@ -334,7 +370,10 @@
 
     <!-- FOOTER -->
     <footer id="about">
-        <h3 class="brand-font" style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.5rem;">Aurora Gems</h3>
+        <div class="footer-brand">
+            <img src="logo.svg" alt="Aurora Gems Logo" class="footer-logo-img">
+            <h3 class="brand-font" style="color: var(--accent-gold); font-size: 1.6rem; margin: 0;">Aurora Gems</h3>
+        </div>
         <p>Curated with love by Chessy in Frisco, Texas.</p>
         <p>Bringing high-quality, affordable luxury to women everywhere.</p>
         <p style="margin-top: 1rem;">&copy; 2026 Aurora Gems. All rights reserved.</p>

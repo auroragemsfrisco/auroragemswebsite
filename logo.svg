@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+    <defs>
+        <!-- Gold Gradient -->
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F7E7C4"/>
+            <stop offset="25%" stop-color="#DFB26A"/>
+            <stop offset="50%" stop-color="#B8863B"/>
+            <stop offset="75%" stop-color="#E5C383"/>
+            <stop offset="100%" stop-color="#8C5C21"/>
+        </linearGradient>
+
+        <!-- Rose Gold Gradient -->
+        <linearGradient id="roseGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FAD0C4"/>
+            <stop offset="50%" stop-color="#C58574"/>
+            <stop offset="100%" stop-color="#8E4E3F"/>
+        </linearGradient>
+
+        <!-- Silver Metallic Gradient -->
+        <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="30%" stop-color="#D1D5DB"/>
+            <stop offset="70%" stop-color="#9CA3AF"/>
+            <stop offset="100%" stop-color="#4B5563"/>
+        </linearGradient>
+
+        <!-- Sapphire Blue Gemstone Radial Gradient -->
+        <radialGradient id="sapphireGrad" cx="35%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#60A5FA"/>
+            <stop offset="30%" stop-color="#2563EB"/>
+            <stop offset="70%" stop-color="#1D4ED8"/>
+            <stop offset="100%" stop-color="#0F172A"/>
+        </radialGradient>
+
+        <!-- Diamond Shimmer Gradient -->
+        <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="40%" stop-color="#E0F2FE"/>
+            <stop offset="70%" stop-color="#BAE6FD"/>
+            <stop offset="100%" stop-color="#7DD3FC"/>
+        </linearGradient>
+
+        <!-- Drop Shadow Filter for Metallic 3D Effect -->
+        <filter id="luxuryShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.25"/>
+        </filter>
+        
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+    <g filter="url(#luxuryShadow)">
+        <!-- PEACOCK CROWN FEATHERS -->
+        <path d="M 235 155 Q 220 135 210 120" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M 245 150 Q 235 130 230 110" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M 255 152 Q 255 130 250 112" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        
+        <circle cx="210" cy="118" r="6" fill="url(#goldGrad)"/>
+        <circle cx="230" cy="108" r="6" fill="url(#goldGrad)"/>
+        <circle cx="250" cy="110" r="6" fill="url(#goldGrad)"/>
+
+        <!-- PEACOCK HEAD & BEAK -->
+        <!-- Beak -->
+        <path d="M 270 178 Q 285 180 275 188 Z" fill="url(#goldGrad)"/>
+        <!-- Head & Neck Outer Loop -->
+        <path d="M 240 200 C 220 160 270 150 270 178 C 270 195 240 215 220 250 C 190 300 210 380 275 390 C 330 398 370 365 330 310 C 310 280 260 270 240 330 C 230 360 270 380 300 340 C 315 320 300 295 270 290" 
+              stroke="url(#goldGrad)" stroke-width="9" stroke-linecap="round" fill="none"/>
+        
+        <!-- INNER ROSE GOLD NECK ACCENT -->
+        <path d="M 238 215 C 225 240 215 290 245 340 C 260 365 295 365 305 335" 
+              stroke="url(#roseGoldGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+        <!-- MAIN TAIL FEATHER 1 (TOP CURVE) -->
+        <path d="M 275 390 C 330 400 420 360 415 230 C 410 140 300 90 285 110 C 275 125 300 160 315 200 C 340 260 350 330 320 375" 
+              stroke="url(#silverGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+        <!-- TAIL FEATHER 2 (UPPER MIDDLE) -->
+        <path d="M 315 375 C 380 380 470 320 445 230 C 430 175 340 140 330 170 C 320 195 350 250 375 285 C 410 335 370 370 335 365" 
+              stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+        <!-- TAIL FEATHER 3 (LOWER MIDDLE) -->
+        <path d="M 335 365 C 410 365 500 300 490 235 C 480 185 410 220 380 250 C 350 280 410 340 440 320" 
+              stroke="url(#roseGoldGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+        <!-- TAIL FEATHER 4 (BOTTOM SWEEP) -->
+        <path d="M 345 350 C 420 350 515 280 485 220 C 455 160 395 240 355 300" 
+              stroke="url(#silverGrad)" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+        <!-- SAPPHIRE GEMSTONES IN TAIL FEATHERS -->
+        <!-- Gem 1 (Top Feather) -->
+        <path d="M 370 175 C 385 165 400 180 390 195 C 375 210 360 190 370 175 Z" fill="url(#sapphireGrad)" stroke="url(#silverGrad)" stroke-width="3"/>
+        <circle cx="380" cy="182" r="3" fill="#FFFFFF" opacity="0.8"/>
+
+        <!-- Gem 2 (Middle Feather) -->
+        <path d="M 435 245 C 450 235 465 250 455 265 C 440 280 425 260 435 245 Z" fill="url(#sapphireGrad)" stroke="url(#goldGrad)" stroke-width="3"/>
+        <circle cx="443" cy="252" r="3" fill="#FFFFFF" opacity="0.8"/>
+
+        <!-- Gem 3 (Lower Feather) -->
+        <path d="M 425 315 C 440 305 455 320 445 335 C 430 350 415 330 425 315 Z" fill="url(#sapphireGrad)" stroke="url(#silverGrad)" stroke-width="3"/>
+        <circle cx="433" cy="322" r="3" fill="#FFFFFF" opacity="0.8"/>
+
+        <!-- CENTER CUT DIAMOND IN PEACOCK BODY -->
+        <g transform="translate(255, 305) scale(0.95)">
+            <!-- Diamond Outer Shape -->
+            <polygon points="25,0 45,0 60,20 35,50 10,20" fill="url(#diamondGrad)" stroke="url(#goldGrad)" stroke-width="3"/>
+            <!-- Diamond Facet Lines -->
+            <line x1="25" y1="0" x2="35" y2="50" stroke="url(#goldGrad)" stroke-width="1.5"/>
+            <line x1="45" y1="0" x2="35" y2="50" stroke="url(#goldGrad)" stroke-width="1.5"/>
+            <line x1="10" y1="20" x2="60" y2="20" stroke="url(#goldGrad)" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="10" y2="20" stroke="url(#goldGrad)" stroke-width="1.5"/>
+            <line x1="45" y1="0" x2="60" y2="20" stroke="url(#goldGrad)" stroke-width="1.5"/>
+            <polygon points="25,0 45,0 50,20 20,20" fill="#FFFFFF" opacity="0.4"/>
+        </g>
+        
+        <!-- DIAMOND ACCENT IN UPPER FEATHER -->
+        <g transform="translate(348, 148) scale(0.45)">
+            <polygon points="25,0 45,0 60,20 35,50 10,20" fill="url(#diamondGrad)" stroke="url(#silverGrad)" stroke-width="3"/>
+            <line x1="25" y1="0" x2="35" y2="50" stroke="url(#silverGrad)" stroke-width="2"/>
+            <line x1="45" y1="0" x2="35" y2="50" stroke="url(#silverGrad)" stroke-width="2"/>
+            <line x1="10" y1="20" x2="60" y2="20" stroke="url(#silverGrad)" stroke-width="2"/>
+        </g>
+    </g>
+</svg>
