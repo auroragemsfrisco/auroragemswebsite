@@ -412,6 +412,122 @@
             font-size: 0.9rem;
             color: #ccc;
         }
+        /* --- TOAST NOTIFICATIONS --- */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background-color: var(--accent-dark);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-family: 'Lato', sans-serif;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- FILTER CONTROLS --- */
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials-section {
+            padding: 4rem 5%;
+            background-color: var(--bg-color);
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 4/5;
+            cursor: pointer;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: bold;
+            font-style: normal;
+            color: var(--accent-gold);
+        }
+
+        /* --- NEWSLETTER --- */
+        .newsletter-section {
+            background: linear-gradient(rgba(250, 246, 240, 0.95), rgba(250, 246, 240, 0.95)), url('https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80') center/cover;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 2rem;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -445,19 +561,19 @@
     <section class="categories-section">
         <h2>Shop by Category</h2>
         <div class="category-grid">
-            <div class="category-card">
+            <div class="category-card" onclick="filterCategory('necklaces')">
                 <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80" alt="Necklaces">
                 <div class="category-overlay">Necklaces</div>
             </div>
-            <div class="category-card">
+            <div class="category-card" onclick="filterCategory('earrings')">
                 <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80" alt="Earrings">
                 <div class="category-overlay">Earrings</div>
             </div>
-            <div class="category-card">
+            <div class="category-card" onclick="filterCategory('bangles')">
                 <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80" alt="Bangles">
                 <div class="category-overlay">Bangles</div>
             </div>
-            <div class="category-card">
+            <div class="category-card" onclick="filterCategory('rings')">
                 <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80" alt="Rings">
                 <div class="category-overlay">Rings</div>
             </div>
@@ -467,35 +583,15 @@
     <!-- PRODUCTS GRID -->
     <section class="products-section" id="collections">
         <h2>Featured Pieces</h2>
-        <div class="grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80" alt="Kundan Choker">
-                <h3 class="product-title">Royal Kundan Choker</h3>
-                <p class="product-price">$85.00</p>
-                <button class="add-to-cart" onclick="addToCart('p1')">Add to Cart</button>
-            </div>
-            <!-- Product 2 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80" alt="Jhumka Earrings">
-                <h3 class="product-title">Classic Gold Jhumkas</h3>
-                <p class="product-price">$45.00</p>
-                <button class="add-to-cart" onclick="addToCart('p2')">Add to Cart</button>
-            </div>
-            <!-- Product 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80" alt="Bangle Set">
-                <h3 class="product-title">Peacock Enamel Bangles</h3>
-                <p class="product-price">$60.00</p>
-                <button class="add-to-cart" onclick="addToCart('p3')">Add to Cart</button>
-            </div>
-            <!-- Product 4 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80" alt="American Diamond Ring">
-                <h3 class="product-title">American Diamond Ring</h3>
-                <p class="product-price">$35.00</p>
-                <button class="add-to-cart" onclick="addToCart('p4')">Add to Cart</button>
-            </div>
+        <div class="filter-controls">
+            <button class="filter-btn active" id="filter-all" onclick="filterCategory('all')">All</button>
+            <button class="filter-btn" id="filter-necklaces" onclick="filterCategory('necklaces')">Necklaces</button>
+            <button class="filter-btn" id="filter-earrings" onclick="filterCategory('earrings')">Earrings</button>
+            <button class="filter-btn" id="filter-bangles" onclick="filterCategory('bangles')">Bangles</button>
+            <button class="filter-btn" id="filter-rings" onclick="filterCategory('rings')">Rings</button>
+        </div>
+        <div class="grid" id="products-grid">
+            <!-- Products injected here dynamically -->
         </div>
     </section>
 
@@ -526,6 +622,37 @@
         </div>
     </section>
 
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Absolutely stunning pieces! I bought the Kundan choker for a wedding and got so many compliments. Highly recommend!"</p>
+                <div class="testimonial-author">- Priya S.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The quality is incredible for the price. I love that I can pick up my orders locally in Frisco. Chessy is so sweet!"</p>
+                <div class="testimonial-author">- Sarah M.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Beautiful everyday wear options. The earrings I got haven't tarnished at all. Aurora Gems is my new go-to."</p>
+                <div class="testimonial-author">- Anjali R.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Join the Aurora Family</h2>
+            <p style="margin-top: 1rem;">Subscribe to receive updates on new collections, exclusive local pickup events, and special offers.</p>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-brand">
@@ -553,21 +680,61 @@
         <button class="btn checkout-btn" onclick="sendOrder()">Request Order via WhatsApp</button>
     </div>
 
+    <div id="toast-container"></div>
+
     <!-- JAVASCRIPT FOR CART FUNCTIONALITY -->
     <script>
         // Secure product catalog (prevents client-side price manipulation)
         const products = {
-            'p1': { name: 'Royal Kundan Choker', price: 85 },
-            'p2': { name: 'Classic Gold Jhumkas', price: 45 },
-            'p3': { name: 'Peacock Enamel Bangles', price: 60 },
-            'p4': { name: 'American Diamond Ring', price: 35 }
+            // Necklaces
+            'n1': { name: 'Royal Kundan Choker', price: 85, category: 'necklaces', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80' },
+            'n2': { name: 'Pearl & Ruby Haar', price: 120, category: 'necklaces', image: 'https://images.unsplash.com/photo-1599643478524-fb66f70d00f0?auto=format&fit=crop&q=80' },
+            'n3': { name: 'Polki Temple Necklace', price: 95, category: 'necklaces', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80' },
+            
+            // Earrings
+            'e1': { name: 'Classic Gold Jhumkas', price: 45, category: 'earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80' },
+            'e2': { name: 'Chandbali Statement Earrings', price: 55, category: 'earrings', image: 'https://images.unsplash.com/photo-1630159495764-a6bc94380f95?auto=format&fit=crop&q=80' },
+            'e3': { name: 'Diamond Solitaire Studs', price: 30, category: 'earrings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80' },
+            'e4': { name: 'Kundan Drop Earrings', price: 40, category: 'earrings', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80' },
+            
+            // Bangles
+            'b1': { name: 'Peacock Enamel Bangles', price: 60, category: 'bangles', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80' },
+            'b2': { name: 'Antique Gold Kadas', price: 75, category: 'bangles', image: 'https://images.unsplash.com/photo-1599643478524-fb66f70d00f0?auto=format&fit=crop&q=80' },
+            'b3': { name: 'Ruby Studded Bracelets', price: 65, category: 'bangles', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80' },
+            
+            // Rings
+            'r1': { name: 'American Diamond Ring', price: 35, category: 'rings', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80' },
+            'r2': { name: 'Emerald Cocktail Ring', price: 45, category: 'rings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80' },
+            'r3': { name: 'Polki Statement Ring', price: 50, category: 'rings', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80' }
         };
 
         let cart = [];
         let total = 0;
+        let currentFilter = 'all';
 
         function toggleCart() {
             document.getElementById('cart-sidebar').classList.toggle('active');
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
         }
 
         function addToCart(productId) {
@@ -577,8 +744,7 @@
                 total += product.price;
                 updateCartUI();
                 
-                // Open cart to show user it was added
-                document.getElementById('cart-sidebar').classList.add('active');
+                showToast(`Added ${product.name} to cart!`);
             }
         }
 
@@ -619,23 +785,77 @@
                 return;
             }
             
-            // Format order for WhatsApp
             let orderText = "Hello Chessy! I would like to place an order for local pickup in Frisco:%0A%0A";
             cart.forEach(item => {
                 orderText += `- ${item.name} ($${item.price})%0A`;
             });
             orderText += `%0ATotal: $${total.toFixed(2)}%0A%0APlease let me know how I can pay (Venmo/Zelle/Cash).`;
             
-            // Obfuscated phone number to prevent scraping
             const phoneParts = ['847', '444', '9284'];
             const phoneStr = phoneParts.join('');
             
             window.open(`https://wa.me/${phoneStr}?text=${orderText}`, '_blank');
         }
 
-        // Initialize empty cart state
-        updateCartUI();
-    </script>
+        function renderProducts(filter = 'all') {
+            currentFilter = filter;
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`filter-${filter}`).classList.add('active');
 
+            Object.entries(products).forEach(([id, product]) => {
+                if (filter === 'all' || product.category === filter) {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    
+                    const img = document.createElement('img');
+                    img.src = product.image;
+                    img.alt = product.name;
+                    
+                    const title = document.createElement('h3');
+                    title.className = 'product-title';
+                    title.textContent = product.name;
+                    
+                    const price = document.createElement('p');
+                    price.className = 'product-price';
+                    price.textContent = '$' + product.price.toFixed(2);
+                    
+                    const btn = document.createElement('button');
+                    btn.className = 'add-to-cart';
+                    btn.textContent = 'Add to Cart';
+                    btn.onclick = () => addToCart(id);
+                    
+                    card.appendChild(img);
+                    card.appendChild(title);
+                    card.appendChild(price);
+                    card.appendChild(btn);
+                    
+                    grid.appendChild(card);
+                }
+            });
+            
+            if (filter !== 'all') {
+                document.getElementById('collections').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function filterCategory(category) {
+            renderProducts(category);
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            showToast("Thank you for subscribing!");
+            event.target.reset();
+        }
+
+        // Initialize UI
+        updateCartUI();
+        renderProducts();
+    </script>
 </body>
 </html>
